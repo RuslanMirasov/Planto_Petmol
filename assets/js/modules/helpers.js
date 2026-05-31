@@ -1,17 +1,3 @@
-export const initNavigationMenu = () => {
-  const burger = document.querySelector('.burger');
-  const menu = document.querySelector('.navigation ');
-  const menuLinks = document.querySelectorAll('.menu__link');
-
-  const toggleMenu = () => {
-    burger.classList.toggle('open');
-    menu.classList.toggle('open');
-  };
-
-  if (burger) burger.addEventListener('click', toggleMenu);
-  menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
-};
-
 export const hidePreloader = () => {
   const preloader = document.querySelector('[data-preloader]');
   const body = document.querySelector('.body');
