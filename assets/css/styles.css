@@ -1192,6 +1192,90 @@ button:disabled {
   height: 0px;
 }
 
+.section--hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 24px;
+  background: #e4c9ac url("../img/hero/bg.webp") no-repeat center top;
+  background-size: 842px auto;
+}
+
+.hero-title {
+  font-size: 55.76px;
+  line-height: 0.8;
+  font-family: var(--inter);
+  text-align: center;
+  font-weight: 400;
+}
+.hero-title span {
+  display: inline-block;
+  position: relative;
+  -webkit-transform: skewX(-20deg) translate(0px, 14px);
+      -ms-transform: skewX(-20deg) translate(0px, 14px);
+          transform: skewX(-20deg) translate(0px, 14px);
+  font-size: 100px;
+  line-height: 40px;
+  font-family: var(--lifehack);
+}
+
+.hero-subtitle {
+  display: block;
+  position: relative;
+  margin-top: 14px;
+  font-size: 18px;
+  -webkit-transform: translate(52%, 0%);
+      -ms-transform: translate(52%, 0%);
+          transform: translate(52%, 0%);
+}
+
+.hero-image {
+  width: 355px;
+  max-width: 100%;
+  margin-top: -75px;
+  margin-bottom: 4px;
+}
+
+.hero-greating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  gap: 16px;
+  padding: 0px 16px 28px 16px;
+}
+.hero-greating img {
+  width: 50px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.hero-greating h2 {
+  font-size: 26px;
+  font-family: var(--inter);
+  color: Var(--biege);
+}
+.hero-greating p {
+  font-size: 13px;
+  line-height: 1.24;
+  color: var(--brown);
+}
+
 .body.locked {
   overflow-x: hidden;
   overflow-y: hidden;
