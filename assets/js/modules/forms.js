@@ -216,7 +216,57 @@ const onRequiredInputFocus = e => {
   removeErrorHTML(input);
 };
 
+const initQuantityFields = () => {
+  const quantityFields = document.querySelectorAll('[data-quantity]');
+
+  if (!quantityFields.length) return;
+
+  quantityFields.forEach(field => {
+    if (field.dataset.quantityInitialized === 'true') return;
+
+    const input = field.querySelector('input[type="number"]');
+    const minusBtn = field.querySelector('[data-minus]');
+    const plusBtn = field.querySelector('[data-plus]');
+
+    if (!input || !minusBtn || !plusBtn) return;
+
+    const min = Number.isNaN(parseFloat(input.min)) ? 0 : parseFloat(input.min);
+    const step = Number.isNaN(parseFloat(input.step)) ? 1 : parseFloat(input.step);
+
+    const getValue = () => {
+      const value = parseFloat(input.value);
+
+      return Number.isNaN(value) ? min : value;
+    };
+
+    const setValue = (value, emitChange = false) => {
+      input.value = Math.max(min, value);
+      if (emitChange) input.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+
+    const normalizeValue = () => {
+      setValue(getValue());
+    };
+
+    minusBtn.addEventListener('click', () => {
+      setValue(getValue() - step, true);
+    });
+
+    plusBtn.addEventListener('click', () => {
+      setValue(getValue() + step, true);
+    });
+
+    input.addEventListener('input', normalizeValue);
+    input.addEventListener('change', normalizeValue);
+
+    normalizeValue();
+    field.dataset.quantityInitialized = 'true';
+  });
+};
+
 export const initForms = () => {
+  initQuantityFields();
+
   document.addEventListener('focusin', e => {
     if (e.target.matches('[required]')) {
       onRequiredInputFocus(e);

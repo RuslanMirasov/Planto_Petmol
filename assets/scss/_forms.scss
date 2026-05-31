@@ -28,6 +28,10 @@
   margin-right: auto;
   gap: var(--form-gap);
 
+  .confirmation {
+    margin: 10px 0px;
+  }
+
   fieldset {
     display: flex;
     position: relative;
@@ -272,11 +276,72 @@
 }
 
 .radio-description {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
   width: auto;
   font-size: 12px;
+  line-height: 14px;
   font-weight: 300;
   flex: 1;
   margin-top: -2px;
   padding-left: 6px;
+  text-align: left;
+  &.small {
+    font-size: 14px;
+    line-height: 12px;
+  }
+}
+
+//data-quantity
+
+.label[data-quantity] {
+  display: inline-flex;
+  width: auto;
+  .quantity {
+    display: inline-block;
+    width: 46px;
+    height: 20px;
+    min-width: 20px;
+    text-align: center;
+    border: none;
+    background: none;
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  [data-minus],
+  [data-plus] {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 0px;
+    color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
+  [data-minus] {
+    background: url('../img/svg/minus.svg') no-repeat center center/cover;
+  }
+  [data-plus] {
+    background: url('../img/svg/plus.svg') no-repeat center center/cover;
+  }
+}
+
+input[type='number'] {
+  appearance: textfield;
+  outline: none;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

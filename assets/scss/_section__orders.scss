@@ -1,0 +1,33 @@
+.confirmation {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 28px;
+
+  li {
+    display: inline-flex;
+    gap: 8px;
+    font-family: var(--inter);
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 1;
+    &:before {
+      content: '';
+      width: 24px;
+      height: 24px;
+    }
+    &.date {
+      &:before {
+        background: url('../img/svg/calendar.svg') no-repeat center center/contain;
+      }
+    }
+    &.time {
+      &:before {
+        background: url('../img/svg/time.svg') no-repeat center center/contain;
+      }
+    }
+  }
+}

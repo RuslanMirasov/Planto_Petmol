@@ -80,22 +80,95 @@
     <!--POPUPS-->
     <div class="backdrop" data-backdrop>
       <div class="popup" data-popup>
-        <!--AUTH POPUP-->
-        <div class="popup-content" id="cookie">
+        <!--MESSAGE POPUP-->
+        <div class="popup-content" id="message">
           <button class="popup-close" data-popup-close></button>
-          <p class="popup-text">
-            Сайт использует Cookie, что&nbsp;позволяет получать информацию о&nbsp;вас. Продолжая использовать сайт, вы&nbsp;соглашаетесь
-            с&nbsp;обработкой персональных данных, собираемых с&nbsp;использованием метрических программ в&nbsp;целях анализа посещения сайта.
-          </p>
+          <h2 class="popup-title">Заголовок в&nbsp;2-3 слова</h2>
+          <p class="popup-text">Некое информационное сообщение,&nbsp;например об&nbsp;успешной&nbsp;регистрации</p>
+          <div class="buttons">
+            <button class="button black full"><span>Мои записи</span></button>
+          </div>
         </div>
 
-        <!--AUTH POPUP-->
-        <div class="popup-content" id="test">
+        <!--WARNING POPUP-->
+        <div class="popup-content" id="warning">
           <button class="popup-close" data-popup-close></button>
-          <p class="popup-text">
-            Сайт использует Cookie, что&nbsp;позволяет получать информацию о&nbsp;вас. Продолжая использовать сайт, вы&nbsp;соглашаетесь
-            с&nbsp;обработкой персональных данных, собираемых с&nbsp;использованием метрических программ в&nbsp;целях анализа посещения сайта.
-          </p>
+          <h2 class="popup-title">Подтверждение</h2>
+          <ul class="confirmation">
+            <li class="date">12 июня</li>
+            <li class="time">12:15</li>
+          </ul>
+          <p class="popup-text big">Мастер-класс</p>
+          <div class="buttons">
+            <button class="button black full"><span>Записаться</span></button>
+          </div>
+        </div>
+
+        <!--ADD TO ORDER POPUP-->
+        <div class="popup-content" id="add-to-order">
+          <button class="popup-close" data-popup-close></button>
+          <h2 class="popup-title">Краб-ролл миндаль&nbsp;с&nbsp;муссом</h2>
+          <p class="popup-text">Ролл, сочетающий нежную сладость&nbsp;крабового мяса со&nbsp;сливочным муссом и&nbsp;лепестками&nbsp;миндаля.</p>
+          <form action="#" class="form" novalidate>
+            <fieldset>
+              <p class="radio-description small">На каком <br />продукте</p>
+              <label class="label label--radio">
+                <input type="radio" name="product" class="radio" value="Петмол" />
+                <p class="label__text">Петмол</p>
+              </label>
+              <label class="label label--radio">
+                <input type="radio" name="product" class="radio" value="Planto" />
+                <p class="label__text">Planto</p>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <p class="radio-description small">Объем</p>
+              <label class="label label--radio">
+                <input type="radio" name="amount" class="radio" value="Стандарт" />
+                <p class="label__text">Стандарт</p>
+              </label>
+              <label class="label label--radio">
+                <input type="radio" name="amount" class="radio" value="Двойной" />
+                <p class="label__text">Двойной</p>
+              </label>
+            </fieldset>
+
+            <label class="label label--select">
+              <select name="position" class="input" data-select required>
+                <option value="" selected disabled hidden>Опции</option>
+                <option value="option 1">Опция 1</option>
+                <option value="option 2">Опция 2</option>
+                <option value="option 3">Опция 3</option>
+                <option value="option 4">Опция 4</option>
+              </select>
+            </label>
+
+            <ul class="confirmation">
+              <li class="date">12 июня</li>
+              <li class="time">12:15</li>
+            </ul>
+
+            <fieldset>
+              <p class="radio-description small">Количество порций</p>
+              <label class="label" data-quantity>
+                <div data-minus>-</div>
+                <input type="number" name="product" class="quantity" value="0" />
+                <div data-plus>+</div>
+              </label>
+            </fieldset>
+          </form>
+
+          <div class="buttons">
+            <button class="button black full"><span>Записаться</span></button>
+          </div>
+        </div>
+
+        <!--QR POPUP-->
+        <div class="popup-content" id="qr">
+          <button class="popup-close" data-popup-close></button>
+          <img src="./assets/img/qr.webp" alt="" />
+          <p class="popup-text">Ваш доступ на&nbsp;мастер-классы. Запишитесь и&nbsp;покажите QR-код на&nbsp;входе.</p>
         </div>
       </div>
     </div>
