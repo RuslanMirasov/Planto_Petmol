@@ -72,15 +72,9 @@ $popup_transition: 0.5s;
   position: absolute;
   width: 32px;
   height: 32px;
-  left: 100%;
-  top: 0px;
+  right: 8px;
+  top: 8px;
   cursor: pointer;
-
-  @media (max-width: 767px) and (orientation: portrait) {
-    left: calc(100% - 32px);
-    top: -32px;
-  }
-
   &:after {
     content: '';
     display: block;

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#EBDBCA" />
+    <meta name="description" content="Вокруг вкуса за 5 дней" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/choices.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.min.css?v=1.0" />
+    <title>Вокруг вкуса за 5 дней</title>
+  </head>
+  <body>
+    <div class="body">
+      <!--PRELOADER-->
+      <div class="preloader" data-preloader>
+        <div class="preloader-content">
+          <img src="./assets/img/header/planto.svg" alt="Planto" width="120" />
+          <img src="./assets/img/header/petmol.svg" alt="Petmol" width="140" />
+        </div>
+      </div>
+
+      <!--HEADER-->
+      <header class="header">
+        <a href="https://planto-club.ru/" target="_blank" class="inner">
+          <img src="./assets/img/header/planto.svg" alt="Planto" width="77" />
+        </a>
+        <a href="https://mypetmol.ru/" target="_blank" class="inner">
+          <img src="./assets/img/header/petmol.svg" alt="Petmol" width="72" />
+        </a>
+      </header>
+
+      <main class="main">
+        <!--SECTION HERO-->
+        <section class="section section--hero">
+          <h1 class="hero-title">ВОКРУГ ВКУСА <br />ЗА <span>5</span> ДНЕЙ</h1>
+          <p class="hero-subtitle">От кондитерской <br />до&nbsp;ресторана</p>
+          <img src="./assets/img/hero/image.webp" class="hero-image" alt="" />
+        </section>
+
+        <!--SECTION FORM-->
+        <section class="section section--form">
+          <div class="container">
+            <h2 class="title">Регистрация</h2>
+
+            <script>
+              const registerSubmit = e => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const json = Object.fromEntries(formData.entries());
+                console.log(json);
+              };
+            </script>
+
+            <form action="#" class="form" novalidate onsubmit="registerSubmit(event)">
+              <label class="label">
+                <input type="text" name="name" class="input" required placeholder="&nbsp;" />
+                <p class="placeholder">Имя*</p>
+              </label>
+
+              <label class="label label--select">
+                <select name="sphere" class="input" data-select required data-select-collection="sphere">
+                  <option value="" selected disabled hidden>Сфера*</option>
+                  <option value="horeca">Horeca</option>
+                  <option value="sphere2">Сфера 2</option>
+                  <option value="sphere3">Сфера 3</option>
+                </select>
+              </label>
+
+              <!--Коллекция полей для horeca-->
+              <fieldset data-collection="sphere" data-collection-name="horeca">
+                <fieldset>
+                  <p class="radio-description">Используете растительные <br />напитки в бизнесе?</p>
+                  <label class="label label--radio">
+                    <input type="radio" name="some-name1" class="radio" value="Да" />
+                    <p class="label__text">Да</p>
+                  </label>
+                  <label class="label label--radio">
+                    <input type="radio" name="some-name1" class="radio" value="Нет" />
+                    <p class="label__text">Нет</p>
+                  </label>
+                </fieldset>
+
+                <fieldset>
+                  <p class="radio-description">Потребление сливок <br />в&nbsp;бизнесе.</p>
+                  <label class="label label--radio">
+                    <input type="radio" name="some-name2" class="radio" value="Да" />
+                    <p class="label__text">Да</p>
+                  </label>
+                  <label class="label label--radio">
+                    <input type="radio" name="some-name2" class="radio" value="Нет" />
+                    <p class="label__text">Нет</p>
+                  </label>
+                </fieldset>
+
+                <label class="label">
+                  <input type="text" name="liters" class="input" inputmode="decimal" placeholder="&nbsp;" />
+                  <p class="placeholder">Количество литров</p>
+                </label>
+              </fieldset>
+
+              <!--Коллекция полей для sphere2-->
+              <fieldset data-collection="sphere" data-collection-name="sphere2">
+                <p>Добавить поля для сферы 2 ...</p>
+              </fieldset>
+
+              <!--Коллекция полей для sphere3-->
+              <fieldset data-collection="sphere" data-collection-name="sphere3">
+                <p>Добавить поля для сферы 3 ...</p>
+              </fieldset>
+
+              <label class="label">
+                <input type="text" name="company-name" class="input" required placeholder="&nbsp;" />
+                <p class="placeholder">Название заведения/компании*</p>
+              </label>
+
+              <label class="label">
+                <input type="text" name="company-face" class="input" required placeholder="&nbsp;" />
+                <p class="placeholder">Юр.Лицо Компании*</p>
+              </label>
+
+              <label class="label label--select">
+                <select name="position" class="input" data-select required>
+                  <option value="" selected disabled hidden>Должность*</option>
+                  <option value="boss">Директор</option>
+                  <option value="driver">Водитель</option>
+                  <option value="barista">Бариста</option>
+                </select>
+              </label>
+
+              <label class="label">
+                <input type="email" name="email" class="input" required placeholder="&nbsp;" />
+                <p class="placeholder">Емейл*</p>
+              </label>
+
+              <label class="label">
+                <input type="tel" name="phone" class="input" placeholder="&nbsp;" />
+                <p class="placeholder">Телефон</p>
+              </label>
+
+              <label class="label label--checkbox">
+                <input type="checkbox" name="confirmation" class="checkbox" required />
+                <p class="label__text">
+                  <span
+                    >Нажимая на&nbsp;кнопку, вы&nbsp;даете согласие на&nbsp;обработку персональных данных, которая осуществляется в&nbsp;соответствии
+                    с&nbsp; <a href="#">Политикой конфиденциальности</a>
+                  </span>
+                </p>
+              </label>
+
+              <label class="label label--checkbox">
+                <input class="checkbox" required type="checkbox" name="confirmation2" />
+                <p class="label__text">
+                  <span>Я соглашаюсь с&nbsp;<a href="#">Пользовательским соглашением</a></span>
+                </p>
+              </label>
+
+              <button type="submit" class="button full"><span>Отправиль</span></button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <!--FOOTER-->
+      <footer class="footer">
+        <ul class="footer-navigation">
+          <li><a href="#" target="_blank">Политика конфиденциальности</a></li>
+          <li><a href="#" target="_blank">Пользовательское соглашение</a></li>
+          <li><a href="#" target="_blank">Согласие на обработку персданных</a></li>
+        </ul>
+
+        <ul class="footer-links">
+          <li><a href="https://planto-club.ru/" target="_blank">planto-club.ru</a></li>
+          <li><a href="https://mypetmol.ru/" target="_blank">mypetmol.ru</a></li>
+        </ul>
+      </footer>
+
+      <!--COOKIE MESSAGE-->
+      <div class="cookie-message" data-cookie-message>
+        <button class="popup-close" data-close-cookie></button>
+        <p>
+          Сайт использует Cookie, что&nbsp;позволяет&nbsp;получать информацию о&nbsp;вас. Продолжая использовать сайт, вы&nbsp;соглашаетесь
+          с&nbsp;обработкой персональных данных, собираемых с&nbsp;использованием метрических программ в&nbsp;целях анализа посещения&nbsp;сайта.
+        </p>
+        <div class="buttons">
+          <button type="button " class="button black" data-accept-cookie><span>Принимаю</span></button>
+          <a href="#" class="button"><span>Пользовательское соглашение</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!--POPUPS-->
+    <div class="backdrop" data-backdrop>
+      <div class="popup" data-popup>
+        <!--AUTH POPUP-->
+        <div class="popup-content" id="cookie">
+          <button class="popup-close" data-popup-close></button>
+          <p class="popup-text">
+            Сайт использует Cookie, что&nbsp;позволяет получать информацию о&nbsp;вас. Продолжая использовать сайт, вы&nbsp;соглашаетесь
+            с&nbsp;обработкой персональных данных, собираемых с&nbsp;использованием метрических программ в&nbsp;целях анализа посещения сайта.
+          </p>
+        </div>
+
+        <!--AUTH POPUP-->
+        <div class="popup-content" id="test">
+          <button class="popup-close" data-popup-close></button>
+          <p class="popup-text">
+            Сайт использует Cookie, что&nbsp;позволяет получать информацию о&nbsp;вас. Продолжая использовать сайт, вы&nbsp;соглашаетесь
+            с&nbsp;обработкой персональных данных, собираемых с&nbsp;использованием метрических программ в&nbsp;целях анализа посещения сайта.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/plugins/iMask.js"></script>
+    <script src="./assets/js/plugins/choices.min.js"></script>
+    <script src="./assets/js/scripts.js" type="module" defer></script>
+  </body>
+</html>

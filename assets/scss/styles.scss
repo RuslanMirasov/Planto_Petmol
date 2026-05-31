@@ -7,8 +7,9 @@
   --lh: 1.24;
 
   --white: #ffffff;
-  --black: #000000;
+  --black: #180000;
   --red: #ff001d;
+  --gray: #f0f0f0;
 
   --bg: #ebdbca;
   --color: #583324;
@@ -32,6 +33,7 @@
 @import 'tabs';
 @import 'accordeon';
 @import 'section__hero';
+@import 'section__form';
 @import 'popup';
 @import 'footer';
 
