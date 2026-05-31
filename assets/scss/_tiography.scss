@@ -1,0 +1,80 @@
+.title {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  line-height: 1.1;
+  text-align: center;
+  &.red {
+    color: var(--red);
+  }
+  &.circles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: myclamp(14px, 16px, 1440px, 1440px);
+      height: myclamp(14px, 16px, 1440px, 1440px);
+      border-radius: 16px;
+      flex-shrink: 0;
+      background: var(--red);
+    }
+    &.green {
+      &:before,
+      &:after {
+        background: var(--green);
+      }
+    }
+  }
+  &.ta--l {
+    text-align: left;
+  }
+  &.upper {
+    text-transform: uppercase;
+  }
+
+  &.title--20 {
+    font-size: myclamp(14px, 20px, 1440px, 1440px);
+  }
+
+  &.title--26 {
+    font-size: myclamp(26px, 26px, 1440px, 1440px);
+  }
+
+  &.title--28 {
+    font-size: myclamp(22px, 28px, 1440px, 2560px);
+  }
+
+  &.title--40 {
+    font-size: myclamp(26px, 40px, 1440px, 1440px);
+  }
+
+  &.title--42 {
+    font-size: myclamp(32px, 42px, 1440px, 1440px);
+  }
+
+  &.title--46 {
+    font-size: myclamp(40px, 46px, 1440px, 2560px);
+  }
+
+  &.title--60 {
+    font-size: myclamp(40px, 60px, 1440px, 1440px);
+    text-transform: uppercase;
+  }
+
+  &.title--64 {
+    font-size: myclamp(40px, 64px, 1440px, 1440px);
+    text-transform: uppercase;
+  }
+}
+
+.subtitle {
+  font-size: myclamp(20px, 24px, 1440px, 1440px);
+  line-height: 1.2;
+  font-weight: 400;
+  text-align: center;
+}

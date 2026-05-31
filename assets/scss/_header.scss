@@ -1,0 +1,25 @@
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  width: 100%;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--brown);
+
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 40px;
+    &:last-child {
+      background: var(--biege);
+    }
+  }
+}

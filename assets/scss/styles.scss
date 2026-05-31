@@ -1,0 +1,37 @@
+:root {
+  --font: 'geologica', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --inter: 'introhead-b', 'Segoe UI', system-ui, sans-serif;
+  --lifehack: 'lifehack', 'Segoe UI', system-ui, cursive, sans-serif;
+
+  --fs: 14px;
+  --lh: 1.24;
+
+  --white: #ffffff;
+  --black: #000000;
+  --red: #ff001d;
+
+  --bg: #ebdbca;
+  --color: #583324;
+
+  --light_biege: #ebdbca;
+  --brown: #4f352a;
+  --biege: #bf8445;
+  --color: #583324;
+  --invalid: #ff001d;
+}
+
+@import 'mixins';
+@import 'reset';
+@import 'preloader';
+@import 'fonts';
+@import 'tiography';
+@import 'forms';
+@import 'select';
+@import 'buttons';
+@import 'header';
+@import 'tabs';
+@import 'accordeon';
+@import 'popup';
+@import 'footer';
+
+//@supports (-webkit-touch-callout: none) {}

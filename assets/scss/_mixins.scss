@@ -1,0 +1,30 @@
+@function strip-unit-safe($value) {
+  @return $value / (1 * 1px);
+}
+
+@function myclamp($min, $value, $screenStart, $screenEnd, $unit: vw) {
+  @if unit($min) != px or unit($value) != px or unit($screenStart) != px or unit($screenEnd) != px {
+    @error "Оба значения должны быть в px";
+  }
+
+  $is-negative: $value < 0;
+
+  $min-num: strip-unit-safe($min);
+  $val-num: abs(strip-unit-safe($value));
+  $screenStart-num: strip-unit-safe($screenStart);
+  $screenEnd-num: strip-unit-safe($screenEnd);
+
+  $vw: ($val-num / $screenStart-num) * 100;
+  $vw-rounded: round($vw * 10000) / 10000;
+  $max: round(($val-num / $screenStart-num) * $screenEnd-num);
+
+  // базовый clamp для положительных
+  $clamp-value: clamp(#{$min}, #{$vw-rounded}#{$unit}, #{$max}px);
+
+  @if $is-negative {
+    $clamp-pos: clamp(#{$val-num}px, #{$vw-rounded}#{$unit}, #{$min-num}px);
+    @return calc(-1 * #{$clamp-pos});
+  } @else {
+    @return $clamp-value;
+  }
+}
