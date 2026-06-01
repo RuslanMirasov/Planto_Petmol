@@ -9,19 +9,6 @@ const INPUT_ERROR_DEFAULT_TEXT = 'Это обязательное поле!';
 const CHECKBOX_ERROR_DEFAULT_TEXT = 'Выберите хотябы один вариант!';
 const RADIO_ERROR_DEFAULT_TEXT = 'Выбор обязателен!';
 
-export const initSelectFields = () => {
-  const allSelectEl = document.querySelectorAll('[data-select]');
-
-  if (allSelectEl.length === 0) return;
-
-  allSelectEl.forEach(select => {
-    new Choices(select, {
-      searchEnabled: false,
-      shouldSort: false,
-    });
-  });
-};
-
 const validationRegEx = [
   {
     name: 'name',
@@ -67,6 +54,19 @@ const validationRegEx = [
     rules: [{ rule: 'selected', error: RADIO_ERROR_DEFAULT_TEXT }],
   },
 ];
+
+export const initSelectFields = () => {
+  const allSelectEl = document.querySelectorAll('[data-select]');
+
+  if (allSelectEl.length === 0) return;
+
+  allSelectEl.forEach(select => {
+    new Choices(select, {
+      searchEnabled: false,
+      shouldSort: false,
+    });
+  });
+};
 
 const getInputGroup = input => {
   if (!input || (input.type !== 'checkbox' && input.type !== 'radio') || !input.name) return null;
@@ -410,9 +410,9 @@ export function initDecimalInputs() {
 }
 
 export const initFieldsetCollections = () => {
-  const selects = document.querySelectorAll('[data-select-collection]');
+  const controls = document.querySelectorAll('[data-open-collection]');
 
-  if (!selects.length) return;
+  if (!controls.length) return;
 
   const setCollectionState = (collection, isActive) => {
     collection.classList.toggle('active', isActive);
@@ -432,20 +432,48 @@ export const initFieldsetCollections = () => {
     });
   };
 
-  const updateCollections = (select, keepInitialActive = false) => {
-    const collectionName = select.dataset.selectCollection;
-    const selectedCollection = select.value;
+  const getControlValues = control => {
+    if ((control.type === 'checkbox' || control.type === 'radio') && !control.checked) return [];
+
+    if (control.type === 'checkbox' || control.type === 'radio') {
+      return [control.value, control.name].filter(Boolean);
+    }
+
+    return [control.value].filter(Boolean);
+  };
+
+  const getActiveCollectionNames = collectionName => {
+    return Array.from(controls)
+      .filter(control => control.dataset.openCollection === collectionName && !control.disabled)
+      .flatMap(getControlValues)
+      .filter(Boolean);
+  };
+
+  const updateCollections = (control, keepInitialActive = false) => {
+    const collectionName = control.dataset.openCollection;
+    const activeCollectionNames = getActiveCollectionNames(collectionName);
     const collections = document.querySelectorAll(`[data-collection="${collectionName}"]`);
 
     collections.forEach(collection => {
       const isActive =
-        keepInitialActive && !selectedCollection ? collection.classList.contains('active') : collection.dataset.collectionName === selectedCollection;
+        keepInitialActive && !activeCollectionNames.length
+          ? collection.classList.contains('active')
+          : activeCollectionNames.includes(collection.dataset.collectionName);
       setCollectionState(collection, isActive);
     });
   };
 
-  selects.forEach(select => {
-    updateCollections(select, true);
-    select.addEventListener('change', () => updateCollections(select));
+  controls.forEach(control => {
+    updateCollections(control, true);
+    control.addEventListener('input', () => updateCollections(control));
+    control.addEventListener('change', () => updateCollections(control));
+
+    if (control.type === 'radio' && control.name) {
+      const radioGroup = control.form || document;
+      radioGroup.querySelectorAll(`input[type="radio"][name="${control.name}"]`).forEach(radio => {
+        if (radio === control) return;
+        radio.addEventListener('change', () => updateCollections(control));
+      });
+    }
   });
 };

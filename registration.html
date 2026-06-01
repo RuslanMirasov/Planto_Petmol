@@ -62,7 +62,7 @@
               </label>
 
               <label class="label label--select">
-                <select name="sphere" class="input" data-select required data-select-collection="sphere">
+                <select name="sphere" class="input" data-select required data-open-collection="sphere">
                   <option value="" selected disabled hidden>&nbsp;</option>
                   <option value="horeca">Horeca</option>
                   <option value="sphere2">Сфера 2</option>
@@ -88,7 +88,7 @@
                 <fieldset>
                   <p class="radio-description">Потребление сливок <br />в&nbsp;бизнесе.</p>
                   <label class="label label--radio">
-                    <input type="radio" name="some-name2" class="radio" value="Да" />
+                    <input type="radio" name="some-name2" class="radio" value="Да" data-open-collection="some" />
                     <p class="label__text">Да</p>
                   </label>
                   <label class="label label--radio">
@@ -97,10 +97,12 @@
                   </label>
                 </fieldset>
 
-                <label class="label">
-                  <input type="text" name="liters" class="input" inputmode="decimal" placeholder="&nbsp;" />
-                  <p class="placeholder">Количество литров</p>
-                </label>
+                <fieldset data-collection="some" data-collection-name="Да">
+                  <label class="label">
+                    <input type="text" name="liters" class="input" inputmode="decimal" placeholder="&nbsp;" />
+                    <p class="placeholder">Количество литров</p>
+                  </label>
+                </fieldset>
               </fieldset>
 
               <!--Коллекция полей для sphere2-->
