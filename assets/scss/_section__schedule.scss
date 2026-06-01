@@ -1,5 +1,6 @@
 .section--schedule {
   padding: 40px 0px;
+  z-index: 2;
 
   .title {
     text-align: left;
@@ -7,5 +8,25 @@
 }
 
 .filters {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
   margin-top: 26px;
+  gap: 14px;
+
+  .label--select {
+    max-width: 170px;
+  }
+
+  .form {
+    width: 100%;
+  }
+  .form > fieldset {
+    width: auto;
+    align-items: center;
+  }
 }

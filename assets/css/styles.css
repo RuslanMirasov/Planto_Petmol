@@ -330,7 +330,7 @@ button:disabled {
   --input-color: var(--brown);
   --input-placeholder-color: var(--biege);
   --input-placeholder-opacity: 1;
-  --invalid-border: 2px solid var(--invalid);
+  --invalid-border: 2px solid var(--white);
   --invalid-color: var(--invalid);
   --form-gap: 16px 18px;
 }
@@ -736,6 +736,10 @@ input[type=number] {
   border-radius: 0px 0px 10px 10px;
 }
 .choices.is-open.is-flipped .choices__list--dropdown {
+  padding-top: 8px;
+  padding-bottom: 0px;
+  -webkit-box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.149);
+          box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.149);
   border-radius: 10px 10px 0px 0px !important;
 }
 .choices.is-open .choices__inner {
@@ -773,6 +777,7 @@ input[type=number] {
 .choices__list.choices__list--single {
   background: none !important;
   padding: 0px 16px !important;
+  padding-right: 0px !important;
 }
 .choices__list.choices__list--single > .choices__item {
   margin: 0;
@@ -782,6 +787,11 @@ input[type=number] {
   margin-top: 0;
 }
 
+.choices__list--dropdown {
+  padding-bottom: 8px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.149);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.149);
+}
 .choices__list--dropdown [data-choice-disabled] {
   display: none;
 }
@@ -792,7 +802,7 @@ input[type=number] {
   border: none !important;
   border-top: none !important;
   font-size: 16px !important;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   background: var(--white) !important;
 }
@@ -863,6 +873,17 @@ input[type=number] {
   color: var(--biege) !important;
   font-size: 16px !important;
   opacity: 1 !important;
+}
+
+.label.label--select .placeholder {
+  z-index: 10;
+}
+.label.label--select .choices.is-focused + .placeholder,
+.label.label--select .choices.is-open + .placeholder,
+.label.label--select .choices:has(.choices__list--single > .choices__item:not(.choices__placeholder)) + .placeholder {
+  -webkit-transform: scale(0.7) translate(0px, -20px);
+      -ms-transform: scale(0.7) translate(0px, -20px);
+          transform: scale(0.7) translate(0px, -20px);
 }
 
 .buttons {
@@ -1429,19 +1450,49 @@ input[type=number] {
 
 .section--schedule {
   padding: 40px 0px;
+  z-index: 2;
 }
 .section--schedule .title {
   text-align: left;
 }
 
 .filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin-top: 26px;
+  gap: 14px;
+}
+.filters .label--select {
+  max-width: 170px;
+}
+.filters .form {
+  width: 100%;
+}
+.filters .form > fieldset {
+  width: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .section--menu {
   background: var(--black);
   color: var(--white);
   padding: 40px 0px;
+  z-index: 2;
 }
 .section--menu .title {
   text-align: left;
@@ -1592,7 +1643,7 @@ input[type=number] {
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  padding: 34px 10px 20px 10px;
+  padding: 20px 10px;
   backdrop-filter: blur(5px);
   -webkit-transition: opacity 0.5s ease-in-out 0s, visibility 0.5s ease-in-out 0s;
   transition: opacity 0.5s ease-in-out 0s, visibility 0.5s ease-in-out 0s;
@@ -1613,7 +1664,7 @@ input[type=number] {
   left: -20px;
   right: -20px;
   top: -50px;
-  width: calc(100% + 40px);
+  width: calc(100% + 70px);
   height: calc(100% + 70px);
   background: rgba(0, 0, 0, 0.4);
   grid-area: 1/1/2/2;

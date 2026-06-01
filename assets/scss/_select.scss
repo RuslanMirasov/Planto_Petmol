@@ -27,6 +27,9 @@ $select_padding: 0px 16px;
     &.is-flipped {
       border-radius: 0px 0px $select_border_radius $select_border_radius;
       .choices__list--dropdown {
+        padding-top: 8px;
+        padding-bottom: 0px;
+        box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.149);
         border-radius: $select_border_radius $select_border_radius 0px 0px !important;
       }
     }
@@ -66,6 +69,7 @@ $select_padding: 0px 16px;
   &.choices__list--single {
     background: none !important;
     padding: $select_padding !important;
+    padding-right: 0px !important;
     > .choices__item {
       margin: 0;
       height: $select_height;
@@ -78,6 +82,8 @@ $select_padding: 0px 16px;
 
 // Выпадающий список
 .choices__list--dropdown {
+  padding-bottom: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.149);
   [data-choice-disabled] {
     display: none;
   }
@@ -87,7 +93,7 @@ $select_padding: 0px 16px;
   border: none !important;
   border-top: none !important;
   font-size: $select_font_size !important;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   background: $select_background !important;
   &.is-active {
@@ -148,4 +154,15 @@ $select_padding: 0px 16px;
   color: var(--biege) !important;
   font-size: $select_font_size !important;
   opacity: 1 !important;
+}
+
+.label.label--select {
+  .placeholder {
+    z-index: 10;
+  }
+  .choices.is-focused + .placeholder,
+  .choices.is-open + .placeholder,
+  .choices:has(.choices__list--single > .choices__item:not(.choices__placeholder)) + .placeholder {
+    transform: scale(0.7) translate(0px, -20px);
+  }
 }
