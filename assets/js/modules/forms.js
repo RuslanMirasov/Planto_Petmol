@@ -1,4 +1,13 @@
-const showErrors = true;
+// РЕНДЕРИТЬ ТЕКСТ ОШИБОК ВАЛИДАЦИИ?
+const SHOW_ERRORS = true;
+
+// ВАЛИДИРОВАТЬ ПОЛЯ СРАЗУ ПРИ ЗАПОЛНЕНИИ?
+const VALIDATE_ON_TYPING = true;
+
+// ДЕФОЛТНЫЕ ТЕКСТЫ ОШИБОК ПОЛЕЙ РАЗНЫХ ТИПОВ
+const INPUT_ERROR_DEFAULT_TEXT = 'Это обязательное поле!';
+const CHECKBOX_ERROR_DEFAULT_TEXT = 'Выберите хотябы один вариант!';
+const RADIO_ERROR_DEFAULT_TEXT = 'Выбор обязателен!';
 
 export const initSelectFields = () => {
   const allSelectEl = document.querySelectorAll('[data-select]');
@@ -16,31 +25,46 @@ export const initSelectFields = () => {
 const validationRegEx = [
   {
     name: 'name',
-    regex: /^[А-Яа-яЁё]+$/,
-    error: 'допустимы только буквы кириллицы',
+    rules: [
+      { rule: 'empty', error: 'Введите ваше полное имя!' },
+      { rule: /^.{2,}$/, error: 'Минимум 2 символа' },
+      { rule: /^[А-Яа-яЁё]+$/, error: 'Допустимы только буквы кириллицы' },
+      { rule: /^.{0,200}$/, error: 'Максимум 200 символов' },
+    ],
+  },
+  {
+    name: 'confirmation',
+    rules: [{ rule: 'checked', error: 'Согласие на обработку персональных данных обязательно!' }],
+  },
+  {
+    name: 'confirmation2',
+    rules: [{ rule: 'checked', error: 'Согласие с пользовательским соглашением обязательно!' }],
   },
   {
     type: 'email',
-    regex: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
-    error: 'некоректно введён адрес емейл',
+    rules: [
+      { rule: 'empty', error: 'E-mail - это обязательное поле!' },
+      { rule: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/, error: 'Некоректно введён адрес емейл' },
+    ],
   },
   {
     type: 'tel',
-    regex: /^\+7 \d{3} \d{3} \d{2} \d{2}$/,
-    error: 'некоректно введён телефон',
+    rules: [
+      { rule: 'empty', error: 'Введите ваш номер телефона!' },
+      { rule: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/, error: 'Некоректно введён телефон' },
+    ],
+  },
+  {
+    type: 'select-one',
+    rules: [{ rule: 'empty', error: INPUT_ERROR_DEFAULT_TEXT }],
   },
   {
     type: 'checkbox',
-    error: 'необходимо согласиться с условиями',
+    rules: [{ rule: 'checked', error: CHECKBOX_ERROR_DEFAULT_TEXT }],
   },
   {
     type: 'radio',
-    error: 'выбор варианта обязателен',
-  },
-  {
-    inputmode: 'decimal',
-    regex: /^\d+(?:[.,]\d{1,2})?$/,
-    error: 'введите число, например 100.00',
+    rules: [{ rule: 'selected', error: RADIO_ERROR_DEFAULT_TEXT }],
   },
 ];
 
@@ -89,55 +113,72 @@ const setInputInvalidState = (input, isInvalid) => {
 };
 
 const validateInput = input => {
-  if (!input.required || input.disabled) return true;
+  if (!input || input.disabled) return true;
 
   const validationError = error => {
     addErrorHTML(error, input);
     return false;
   };
 
-  const { name, value, checked, type } = input;
+  const { name, value, type } = input;
   const group = getInputGroup(input);
+  const isRequired = group ? group.some(field => field.required) : input.required;
+  const validations = validationRegEx.filter(
+    v => (v.name && v.name === name) || (v.type && v.type === type) || (v.inputmode && v.inputmode === input.inputMode)
+  );
+  const hasRequiredValidation = validations.some(validation =>
+    validation.rules.some(({ rule }) => rule === 'empty' || rule === 'checked' || rule === 'selected')
+  );
 
-  if (group && (type === 'checkbox' || type === 'radio') && !group.some(field => field.checked)) {
-    return validationError(validationRegEx.find(rule => rule.type === type).error);
-  }
+  if (isRequired && !hasRequiredValidation) {
+    if (group && (type === 'checkbox' || type === 'radio') && !group.some(field => field.checked)) {
+      return validationError(INPUT_ERROR_DEFAULT_TEXT);
+    }
 
-  if (!group && (type === 'checkbox' || type === 'radio') && !checked) {
-    return validationError(validationRegEx.find(rule => rule.type === type).error);
-  }
+    if (!group && (type === 'checkbox' || type === 'radio') && !input.checked) {
+      return validationError(INPUT_ERROR_DEFAULT_TEXT);
+    }
 
-  if (!value || value === '') {
-    return validationError('Это обязательное поле!');
-  }
-
-  const typeValidation = validationRegEx.find(v => v.type === type);
-
-  if (typeValidation) {
-    const regex = new RegExp(typeValidation.regex);
-
-    if (!regex.test(value.trim())) {
-      return validationError(typeValidation.error);
+    if (type !== 'checkbox' && type !== 'radio' && value.trim() === '') {
+      return validationError(INPUT_ERROR_DEFAULT_TEXT);
     }
   }
 
-  const nameValidation = validationRegEx.find(v => v.name === name);
+  for (const validation of validations) {
+    for (const { rule, error } of validation.rules) {
+      if (rule === 'empty') {
+        if (isRequired && value.trim() === '') {
+          return validationError(error);
+        }
 
-  if (nameValidation) {
-    const regex = new RegExp(nameValidation.regex);
+        continue;
+      }
 
-    if (!regex.test(value.trim())) {
-      return validationError(nameValidation.error);
-    }
-  }
+      if (rule === 'checked') {
+        if (isRequired && !input.checked) {
+          return validationError(error);
+        }
 
-  const inputmodeValidation = validationRegEx.find(v => v.inputmode === input.inputMode);
+        continue;
+      }
 
-  if (inputmodeValidation) {
-    const regex = new RegExp(inputmodeValidation.regex);
+      if (rule === 'selected') {
+        if (isRequired && group && !group.some(field => field.checked)) {
+          return validationError(error);
+        }
 
-    if (!regex.test(value.trim())) {
-      return validationError(inputmodeValidation.error);
+        if (isRequired && !group && !input.checked) {
+          return validationError(error);
+        }
+
+        continue;
+      }
+
+      if (!isRequired && value.trim() === '') continue;
+
+      if (!rule.test(value.trim())) {
+        return validationError(error);
+      }
     }
   }
 
@@ -148,9 +189,10 @@ const validateInput = input => {
 const validateForm = form => {
   if (!form) return;
   let errorsCount = 0;
+  let firstInvalidInput = null;
   const validatedGroups = new Set();
 
-  const inputs = form.querySelectorAll('[required]');
+  const inputs = form.querySelectorAll('input, textarea, select');
   if (inputs.length === 0) return true;
 
   inputs.forEach(input => {
@@ -161,8 +203,32 @@ const validateForm = form => {
     if (groupKey) validatedGroups.add(groupKey);
 
     const isInputValid = validateInput(input);
+    if (!isInputValid && !firstInvalidInput) firstInvalidInput = input;
     errorsCount = isInputValid ? errorsCount : errorsCount + 1;
   });
+
+  if (firstInvalidInput) {
+    const scroller = document.querySelector('.body') || document.scrollingElement || document.documentElement;
+    const target = getInputErrorHolder(firstInvalidInput) || firstInvalidInput;
+    const header = document.querySelector('.header');
+    const offset = (header?.offsetHeight || 0) + 30;
+    const targetRect = target.getBoundingClientRect();
+
+    if (scroller === document.scrollingElement || scroller === document.documentElement) {
+      window.scrollTo({
+        top: Math.max(0, targetRect.top + window.scrollY - offset),
+        behavior: 'smooth',
+      });
+    } else {
+      const scrollerRect = scroller.getBoundingClientRect();
+      const top = targetRect.top - scrollerRect.top + scroller.scrollTop - offset;
+
+      scroller.scrollTo({
+        top: Math.max(0, top),
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return errorsCount <= 0;
 };
@@ -182,7 +248,7 @@ const addErrorHTML = (error, input) => {
       return;
     }
 
-    if (showErrors) {
+    if (SHOW_ERRORS) {
       errorHolder.insertAdjacentHTML('beforeend', `<p class="inputError"><span>${error}</span></p>`);
       const newError = getHolderError(errorHolder);
       newError.style.height = newError.scrollHeight + 'px';
@@ -273,10 +339,17 @@ export const initForms = () => {
     }
   });
 
+  document.addEventListener('input', e => {
+    if (!VALIDATE_ON_TYPING || !e.target.matches('input, textarea')) return;
+    if (e.target.type === 'checkbox' || e.target.type === 'radio') return;
+
+    validateInput(e.target);
+  });
+
   document.addEventListener('change', e => {
-    if (e.target.type === 'checkbox' || e.target.type === 'radio') {
-      validateInput(e.target);
-    }
+    if (!VALIDATE_ON_TYPING || !e.target.matches('input, textarea, select')) return;
+
+    validateInput(e.target);
   });
 
   // SUBMIT MIDDLEWARE
@@ -296,7 +369,7 @@ export const initForms = () => {
   );
 };
 
-export function initPhoneInputs(mask = '+7 000 000-00-00') {
+export function initPhoneInputs(mask = '+7 (000) 000-00-00') {
   const inputs = document.querySelectorAll('[type="tel"]');
 
   if (!inputs.length) return;
@@ -324,11 +397,11 @@ export function initDecimalInputs() {
       mask: Number,
       scale: 2,
       signed: false,
-      thousandsSeparator: '',
+      thousandsSeparator: ' ',
       padFractionalZeros: false,
       normalizeZeros: true,
       radix: '.',
-      mapToRadix: [','],
+      mapToRadix: [',', ' '],
       min: 0,
     });
 
