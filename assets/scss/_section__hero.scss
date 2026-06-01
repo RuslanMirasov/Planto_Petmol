@@ -42,7 +42,8 @@
   display: flex;
   position: relative;
   width: 100%;
-  justify-content: center;
+  max-width: 420px;
+  justify-content: space-between;
   align-items: flex-end;
   align-content: flex-end;
   gap: 16px;
@@ -51,6 +52,7 @@
   img {
     width: 50px;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
   h2 {

@@ -44,12 +44,86 @@
               <h2>Рады видеть вас, Константин!</h2>
               <p>Ваш доступ на мастер-классы. <br />Запишитесь и покажите QR-код на входе.</p>
             </div>
-            <img src="./assets/img/svg/qr.svg" alt="" />
+            <img src="./assets/img/svg/qr.svg" alt="" data-popup-open="qr" />
+          </div>
+        </section>
+
+        <!--SECTION ABOUT-->
+        <section class="section section--about" id="about">
+          <div class="about">
+            <div class="container">
+              <p>
+                Петмол более 10&nbsp;лет&nbsp;является выбором профессионалов. Стабильное высокое качество, насыщенный сливочный вкус и&nbsp;удобство
+                в&nbsp;работе делают сливки Петмол надёжной основой для&nbsp;любых кулинарных задач. Это&nbsp;База,&nbsp;Шеф!
+              </p>
+              <img src="./assets/img/about/image.webp" alt="" />
+            </div>
+          </div>
+          <div class="container">
+            <div class="about-circle">
+              <img src="./assets/img/about/image2.webp" alt="" />
+              <p>
+                Planto&nbsp;— вкусные напитки на&nbsp;100% растительной основе, созданные для&nbsp;профессионалов! С&nbsp;Planto привычные десерты,
+                блюда и&nbsp;напитки обретают новые грани вкуса. Попробуйте новинку Planto Barista Миндаль без&nbsp;сахара с&nbsp;идельной пенкой
+                на&nbsp;нашем стенде!
+              </p>
+            </div>
+
+            <div class="loyality-program">
+              <h2 class="title">7&nbsp;-&nbsp;12 июня 2026</h2>
+              <p>Сочи, Курорт Красная Поляна 960</p>
+              <a href="#" class="loyality-program__banner">
+                <p>программа лояльности Planto</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!--SECTION SCHEDULE-->
+        <section class="section section--schedule visible" id="schedule">
+          <div class="container">
+            <h2 class="title">Расписание</h2>
+
+            <div class="filters">
+              <form action="#" class="form" novalidate>
+                <label class="label label--select">
+                  <select name="date" class="input" data-select>
+                    <option value="" selected disabled hidden>Выбор даты</option>
+                    <option value="07.06.2026">7 июня 2026</option>
+                    <option value="08.06.2026">8 июня 2026</option>
+                    <option value="09.06.2026">9 июня 2026</option>
+                    <option value="10.06.2026">10 июня 2026</option>
+                    <option value="11.06.2026">11 июня 2026</option>
+                    <option value="12.06.2026">12 июня 2026</option>
+                  </select>
+                </label>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!--SECTION MENU-->
+        <section class="section section--menu visible" id="menu">
+          <div class="container">
+            <h2 class="title">Меню</h2>
+
+            <div class="filters">
+              <form action="#" class="form" novalidate>
+                <label class="label label--select">
+                  <select name="date" class="input" data-select>
+                    <option value="" selected disabled hidden>Выбор даты</option>
+                    <option value="horeca">Horeca</option>
+                    <option value="sphere2">Сфера 2</option>
+                    <option value="sphere3">Сфера 3</option>
+                  </select>
+                </label>
+              </form>
+            </div>
           </div>
         </section>
 
         <!--SECTION MY ORDERS-->
-        <section class="section section--orders">
+        <section class="section section--orders" id="orders">
           <div class="container">
             <h2 class="title">Мои заказы</h2>
             <ul class="orders">
@@ -121,6 +195,42 @@
           <li><a href="https://mypetmol.ru/" target="_blank">mypetmol.ru</a></li>
         </ul>
       </footer>
+
+      <!--NAVIGATION MENU-->
+      <nav class="navigation-menu">
+        <ul>
+          <li>
+            <a href="#orders">
+              <img src="./assets/img/svg/ok.svg" alt="" />
+              <p>Мои заказы</p>
+            </a>
+          </li>
+          <li>
+            <a href="#schedule">
+              <img src="./assets/img/svg/clock.svg" alt="" />
+              <p>Расписание</p>
+            </a>
+          </li>
+          <li>
+            <a href="#menu">
+              <img src="./assets/img/svg/menu.svg" alt="" />
+              <p>Меню</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./assets/img/svg/pen.svg" alt="" />
+              <p>Мои записи</p>
+            </a>
+          </li>
+          <li>
+            <a href="#about">
+              <img src="./assets/img/svg/info.svg" alt="" />
+              <p>О проекте</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <!--COOKIE MESSAGE-->
       <div class="cookie-message" data-cookie-message>
