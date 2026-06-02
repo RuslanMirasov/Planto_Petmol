@@ -8,7 +8,7 @@ export const initAccordeons = () => {
   };
 
   const getBody = accordeon => getOwnElement(accordeon, '[data-accordeon-body]');
-  const getHeader = accordeon => getOwnElement(accordeon, '[data-accordeon-header]');
+  const getHeader = accordeon => getOwnElement(accordeon, '[data-accordeon-head]');
 
   const getActiveParentAccordeons = accordeon => {
     const parents = [];

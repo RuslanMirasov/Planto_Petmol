@@ -74,6 +74,10 @@
   }
   &.label--select {
     z-index: 5;
+
+    &:has(.choices.is-open) {
+      z-index: 15;
+    }
   }
 
   .label__text {
@@ -344,4 +348,21 @@ input[type='number']::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+.alert.alert-danger {
+  display: flex;
+  position: relative;
+  width: 100%;
+  background: var(--invalid);
+  border-radius: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 14px;
+  font-size: 12px;
+  line-height: 1.24;
+  padding: 14px 16px;
+  margin: 0 auto;
 }

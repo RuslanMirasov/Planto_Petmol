@@ -11,34 +11,78 @@ const RADIO_ERROR_DEFAULT_TEXT = 'Выбор обязателен!';
 
 const validationRegEx = [
   {
-    name: 'name',
+    name: 'fullName',
     rules: [
-      { rule: 'empty', error: 'Введите ваше полное имя!' },
-      { rule: /^.{2,}$/, error: 'Минимум 2 символа' },
+      { rule: 'empty', error: 'Имя обязательно' },
+      { rule: /^.{2,}$/, error: 'Имя не должно быть меньше 2 символов' },
       { rule: /^[А-Яа-яЁё]+$/, error: 'Допустимы только буквы кириллицы' },
-      { rule: /^.{0,200}$/, error: 'Максимум 200 символов' },
+      { rule: /^.{0,200}$/, error: 'Имя не должно превышать 200 символов' },
     ],
   },
   {
-    name: 'confirmation',
-    rules: [{ rule: 'checked', error: 'Согласие на обработку персональных данных обязательно!' }],
+    name: 'companyName',
+    rules: [{ rule: 'empty', error: INPUT_ERROR_DEFAULT_TEXT }],
   },
   {
-    name: 'confirmation2',
-    rules: [{ rule: 'checked', error: 'Согласие с пользовательским соглашением обязательно!' }],
+    name: 'position',
+    rules: [{ rule: 'empty', error: 'Должность обязательна' }],
+  },
+  {
+    name: 'businessSector',
+    rules: [{ rule: 'empty', error: 'Сфера деятельности обязательна' }],
+  },
+  {
+    name: 'plantBeveragesVolumeLiters',
+    rules: [{ rule: 'empty', error: 'Укажите объём растительных напитков в литрах' }],
+  },
+  {
+    name: 'creamVolumeLiters',
+    rules: [{ rule: 'empty', error: 'Укажите объём сливок в литрах' }],
+  },
+  {
+    name: 'consentDataProcessing',
+    rules: [
+      {
+        rule: 'checked',
+        error: 'Необходимо согласие на обработку персональных данных',
+      },
+    ],
+  },
+  {
+    name: 'consentUserAgreement',
+    rules: [
+      {
+        rule: 'checked',
+        error: 'Необходимо согласие с пользовательским соглашением',
+      },
+    ],
   },
   {
     type: 'email',
     rules: [
-      { rule: 'empty', error: 'E-mail - это обязательное поле!' },
-      { rule: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/, error: 'Некоректно введён адрес емейл' },
+      { rule: 'empty', error: 'Email обязателен.' },
+      {
+        rule: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        error: 'Введите корректный email.',
+      },
+      {
+        rule: /^.{0,256}$/,
+        error: 'Email не должен превышать 256 символов.',
+      },
     ],
   },
   {
     type: 'tel',
     rules: [
-      { rule: 'empty', error: 'Введите ваш номер телефона!' },
-      { rule: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/, error: 'Некоректно введён телефон' },
+      { rule: 'empty', error: 'Телефон обязателен' },
+      {
+        rule: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
+        error: 'Введите корректный телефон.',
+      },
+      {
+        rule: /^.{0,50}$/,
+        error: 'Телефон не должен превышать 50 символов',
+      },
     ],
   },
   {
@@ -60,11 +104,34 @@ export const initSelectFields = () => {
 
   if (allSelectEl.length === 0) return;
 
-  allSelectEl.forEach(select => {
-    new Choices(select, {
+  return Array.from(allSelectEl).map(select => {
+    select.addEventListener(
+      'change',
+      event => {
+        if (!(event instanceof CustomEvent)) return;
+        if (!event.detail || typeof event.detail !== 'object') return;
+        if (!('value' in event.detail)) return;
+
+        event.stopImmediatePropagation();
+
+        select.value = String(event.detail.value ?? '');
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      },
+      true
+    );
+
+    const choices = new Choices(select, {
       searchEnabled: false,
       shouldSort: false,
     });
+
+    if (typeof onChange === 'function') {
+      select.addEventListener('change', () => {
+        onChange(String(select.value), select);
+      });
+    }
+
+    return choices;
   });
 };
 

@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 24px;
-  background: #e4c9ac url('../img/hero/bg.webp') no-repeat center top;
-  background-size: 842px auto;
+  padding-top: 50px;
+  background: var(--bg) url('../img/hero/bg.webp') no-repeat center -40px;
+  background-size: 838px auto;
 }
 
 .hero-title {
@@ -34,7 +34,7 @@
 .hero-image {
   width: 355px;
   max-width: 100%;
-  margin-top: -75px;
+  margin-top: -60px;
   margin-bottom: 4px;
 }
 
@@ -47,11 +47,12 @@
   align-items: flex-end;
   align-content: flex-end;
   gap: 16px;
-  padding: 0px 16px 28px 16px;
+  padding: 0px 16px 20px 16px;
 
   img {
     width: 50px;
     flex-shrink: 0;
+    margin: 0 auto;
     cursor: pointer;
   }
 

@@ -16,12 +16,27 @@
 
 @font-face {
   font-family: 'geologica';
+  src: url('../fonts/geologica-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'geologica';
   src: url('../fonts/geologica-semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'geologica';
+  src: url('../fonts/geologica-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'introhead-b';
   src: url('../fonts/introhead-b.woff2') format('woff2');

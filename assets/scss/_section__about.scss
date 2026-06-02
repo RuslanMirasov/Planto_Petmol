@@ -38,7 +38,7 @@
   align-items: center;
   align-content: center;
   gap: 12px;
-  background: var(--white);
+  background: url('../img/about/circle.webp') no-repeat center center/cover;
   left: 50%;
   margin-left: -210px;
   margin-top: -210px;
@@ -71,26 +71,12 @@
     font-size: 32px;
     color: var(--biege);
   }
-
-  p {
-    font-size: 16px;
-  }
 }
 
-.loyality-program__banner {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 100%;
-  height: 174px;
-  max-width: 355px;
-  background: url('../img/svg/loyality-bg.svg') no-repeat center center/contain;
-  margin-top: 30px;
-  p {
-    color: var(--biege);
-    font-family: var(--inter);
-    font-size: 26px;
+.loyality-program {
+  .banner {
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 100%;
   }
 }

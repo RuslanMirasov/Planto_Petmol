@@ -140,6 +140,7 @@ button {
   transition: transform 0.5s ease-in-out 0s;
   transform: translate(0%, 102%);
   z-index: 100;
+  box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2);
   &.active {
     transform: translate(0%, 0%);
   }
@@ -160,4 +161,29 @@ button {
       min-width: 295px;
     }
   }
+}
+
+// SIMPLEBAR
+
+.custom-scrollbar {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 736px;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 6px !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, 0.6);
+  border: none !important;
+  left: calc(100% + 6px);
+}
+
+.simplebar-scrollbar:before {
+  background-color: var(--biege) !important;
+  width: 2px !important;
+  left: 2px !important;
+  opacity: 0.6 !important;
+  border-radius: 2px !important;
 }

@@ -71,10 +71,7 @@
 
             <div class="loyality-program">
               <h2 class="title">7&nbsp;-&nbsp;12 июня 2026</h2>
-              <p>Сочи, Курорт Красная Поляна 960</p>
-              <a href="#" class="loyality-program__banner">
-                <p>программа лояльности Planto</p>
-              </a>
+              <img src="./assets/img/about/banner.webp" alt="" class="banner" />
             </div>
           </div>
         </section>
@@ -98,19 +95,100 @@
                   </select>
                   <p class="placeholder">Выбор даты</p>
                 </label>
-
-                <fieldset>
-                  <label class="label label--radio">
-                    <input type="radio" name="amount" class="radio" value="Утро" />
-                    <p class="label__text">Утро</p>
-                  </label>
-                  <label class="label label--radio">
-                    <input type="radio" name="amount" class="radio" value="Вечер" />
-                    <p class="label__text">Вечер</p>
-                  </label>
-                </fieldset>
               </form>
               <button type="button" class="button black full"><span>Мои записи</span></button>
+            </div>
+
+            <div class="custom-scrollbar" data-simplebar>
+              <ul class="schedule">
+                <li>
+                  <!--7 ИЮНЯ-->
+                  <h3 class="schedule__inner schedule__inner--date">
+                    <p><span>7</span>июня</p>
+                  </h3>
+
+                  <div class="schedule__inner">
+                    <div class="schedule__time">
+                      <p>8:00 - 9:00</p>
+                      <span>Свободно мест: 3 из 15</span>
+                    </div>
+                    <div data-accordeon>
+                      <div data-accordeon-head>
+                        <p class="schedule__title">Утренний кофе с диджеем</p>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="schedule__text">
+                          Это тренд, где люди собираются в&nbsp;specialty-кофейнях, чтобы выпить кофе и&nbsp;потанцевать под&nbsp;бодрые DJ-сеты.
+                          Такие&nbsp;тусовки длятся всего 2-3&nbsp;часа и&nbsp;проходят без алкоголя
+                        </p>
+                      </div>
+                    </div>
+                    <button type="button" class="button small" data-popup-open="confirmation"><span>Записаться</span></button>
+                  </div>
+
+                  <div class="schedule__inner">
+                    <div class="schedule__time">
+                      <p>9:00 - 10:00</p>
+                      <span>Свободно мест: 99 из 155</span>
+                    </div>
+                    <div data-accordeon>
+                      <div data-accordeon-head>
+                        <p class="schedule__title">Мастер-класс</p>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="schedule__text">
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, doloremque ullam dignissimos dolorem culpa omnis, qui
+                          sed nulla ducimus ut sequi similique debitis, quia unde eum voluptas a! Perspiciatis, eos!
+                        </p>
+                      </div>
+                    </div>
+                    <button type="button" class="button small" data-popup-open="confirmation"><span>Записаться</span></button>
+                  </div>
+
+                  <!--8 ИЮНЯ-->
+                  <h3 class="schedule__inner schedule__inner--date">
+                    <p><span>8</span>июня</p>
+                  </h3>
+
+                  <div class="schedule__inner">
+                    <div class="schedule__time">
+                      <p>8:00 - 9:00</p>
+                      <span>Свободно мест: 3 из 15</span>
+                    </div>
+                    <div data-accordeon>
+                      <div data-accordeon-head>
+                        <p class="schedule__title">Утренний кофе с диджеем</p>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="schedule__text">
+                          Это тренд, где люди собираются в&nbsp;specialty-кофейнях, чтобы выпить кофе и&nbsp;потанцевать под&nbsp;бодрые DJ-сеты.
+                          Такие&nbsp;тусовки длятся всего 2-3&nbsp;часа и&nbsp;проходят без алкоголя
+                        </p>
+                      </div>
+                    </div>
+                    <button type="button" class="button small" data-popup-open="message"><span>Отменить запись</span></button>
+                  </div>
+
+                  <div class="schedule__inner">
+                    <div class="schedule__time">
+                      <p>9:00 - 10:00</p>
+                      <span>Свободно мест: 99 из 155</span>
+                    </div>
+                    <div data-accordeon>
+                      <div data-accordeon-head>
+                        <p class="schedule__title">Мастер-класс</p>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="schedule__text">
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, doloremque ullam dignissimos dolorem culpa omnis, qui
+                          sed nulla ducimus ut sequi similique debitis, quia unde eum voluptas a! Perspiciatis, eos!
+                        </p>
+                      </div>
+                    </div>
+                    <button type="button" class="button small" data-popup-open="confirmation"><span>Записаться</span></button>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -235,7 +313,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#orders">
               <img src="./assets/img/svg/pen.svg" alt="" />
               <p>Мои записи</p>
             </a>
@@ -272,12 +350,12 @@
           <h2 class="popup-title">Заголовок в&nbsp;2-3 слова</h2>
           <p class="popup-text">Некое информационное сообщение,&nbsp;например об&nbsp;успешной&nbsp;регистрации</p>
           <div class="buttons">
-            <button class="button black full"><span>Мои записи</span></button>
+            <button class="button black full" data-popup-close><span>Мои записи</span></button>
           </div>
         </div>
 
-        <!--WARNING POPUP-->
-        <div class="popup-content" id="warning">
+        <!--CONFIRMATION POPUP-->
+        <div class="popup-content" id="confirmation">
           <button class="popup-close" data-popup-close></button>
           <h2 class="popup-title">Подтверждение</h2>
           <ul class="confirmation">
@@ -286,7 +364,7 @@
           </ul>
           <p class="popup-text big">Мастер-класс</p>
           <div class="buttons">
-            <button class="button black full"><span>Записаться</span></button>
+            <button class="button black full" data-popup-open="message"><span>Записаться</span></button>
           </div>
         </div>
 
@@ -362,6 +440,7 @@
 
     <script src="./assets/js/plugins/iMask.js"></script>
     <script src="./assets/js/plugins/choices.min.js"></script>
+    <script src="./assets/js/plugins/simplebar.min.js"></script>
     <script src="./assets/js/scripts.js" type="module" defer></script>
   </body>
 </html>
