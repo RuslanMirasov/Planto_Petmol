@@ -363,30 +363,68 @@ const initQuantityFields = () => {
 
     if (!input || !minusBtn || !plusBtn) return;
 
-    const min = Number.isNaN(parseFloat(input.min)) ? 0 : parseFloat(input.min);
-    const step = Number.isNaN(parseFloat(input.step)) ? 1 : parseFloat(input.step);
+    const getNumberAttribute = (name, fallback) => {
+      const value = parseFloat(input.getAttribute(name));
+
+      return Number.isFinite(value) ? value : fallback;
+    };
+
+    const getLimits = () => ({
+      min: getNumberAttribute('min', 0),
+      max: getNumberAttribute('max', Infinity),
+      step: input.step === 'any' ? 1 : getNumberAttribute('step', 1),
+    });
+
+    const clampValue = value => {
+      const { min, max } = getLimits();
+
+      return Math.min(Math.max(value, min), max);
+    };
+
+    const roundByStep = value => {
+      const { step } = getLimits();
+      const decimals = String(step).includes('.') ? String(step).split('.')[1].length : 0;
+
+      return Number(value.toFixed(decimals));
+    };
 
     const getValue = () => {
       const value = parseFloat(input.value);
 
-      return Number.isNaN(value) ? min : value;
+      return Number.isNaN(value) ? getLimits().min : value;
     };
 
     const setValue = (value, emitChange = false) => {
-      input.value = Math.max(min, value);
-      if (emitChange) input.dispatchEvent(new Event('change', { bubbles: true }));
+      const nextValue = String(roundByStep(clampValue(value)));
+      const isChanged = input.value !== nextValue;
+
+      input.value = nextValue;
+      updateButtonsState();
+      if (emitChange && isChanged) input.dispatchEvent(new Event('change', { bubbles: true }));
     };
 
     const normalizeValue = () => {
       setValue(getValue());
     };
 
+    const updateButtonsState = () => {
+      const { min, max } = getLimits();
+      const value = clampValue(getValue());
+
+      minusBtn.disabled = value <= min;
+      plusBtn.disabled = value >= max;
+      minusBtn.setAttribute('aria-disabled', String(minusBtn.disabled));
+      plusBtn.setAttribute('aria-disabled', String(plusBtn.disabled));
+    };
+
     minusBtn.addEventListener('click', () => {
-      setValue(getValue() - step, true);
+      if (minusBtn.disabled) return;
+      setValue(getValue() - getLimits().step, true);
     });
 
     plusBtn.addEventListener('click', () => {
-      setValue(getValue() + step, true);
+      if (plusBtn.disabled) return;
+      setValue(getValue() + getLimits().step, true);
     });
 
     input.addEventListener('input', normalizeValue);

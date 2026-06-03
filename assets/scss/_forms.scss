@@ -350,6 +350,24 @@ input[type='number'] {
   appearance: textfield;
 }
 
+input[type='time'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type='time']::-webkit-inner-spin-button,
+input[type='time']::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
 .alert.alert-danger {
   display: flex;
   position: relative;

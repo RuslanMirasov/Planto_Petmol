@@ -33,6 +33,41 @@ $arrow_size: 24px;
       }
     }
   }
+
+  &.red {
+    [data-accordeon-head] {
+      display: flex;
+      position: relative;
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-end;
+      align-content: flex-end;
+      gap: 10px;
+      padding-right: 0px;
+      align-items: flex-end;
+
+      &:before {
+        display: block;
+        flex-shrink: 0;
+        order: 2;
+        position: relative;
+        top: auto;
+        right: auto;
+        width: $arrow_size;
+        height: $arrow_size;
+        transform: translate(0%, 5%) rotate(0deg);
+        background: url('../img/svg/arrow-down-red.svg') no-repeat center center/cover;
+      }
+    }
+    &.active {
+      > [data-accordeon-head] {
+        &:before {
+          transform: translate(0%, 5%) rotate(180deg);
+        }
+      }
+    }
+  }
 }
 
 [data-accordeon-body] {

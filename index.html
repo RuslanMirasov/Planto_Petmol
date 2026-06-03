@@ -23,12 +23,14 @@
 
       <!--HEADER-->
       <header class="header">
-        <a href="https://planto-club.ru/" target="_blank" class="inner">
-          <img src="./assets/img/header/planto.svg" alt="Planto" width="77" />
-        </a>
-        <a href="https://mypetmol.ru/" target="_blank" class="inner">
-          <img src="./assets/img/header/petmol.svg" alt="Petmol" width="72" />
-        </a>
+        <div class="container">
+          <a href="https://planto-club.ru/" target="_blank" class="inner">
+            <img src="./assets/img/header/planto.svg" alt="Planto" width="77" />
+          </a>
+          <a href="https://mypetmol.ru/" target="_blank" class="inner">
+            <img src="./assets/img/header/petmol.svg" alt="Petmol" width="72" />
+          </a>
+        </div>
       </header>
 
       <main class="main">
@@ -96,7 +98,7 @@
                   <p class="placeholder">Выбор даты</p>
                 </label>
               </form>
-              <button type="button" class="button black full"><span>Мои записи</span></button>
+              <button type="button" class="button black full" id="booking"><span>Мои записи</span></button>
             </div>
 
             <div class="custom-scrollbar" data-simplebar>
@@ -212,7 +214,616 @@
                   </select>
                   <p class="placeholder">Выбор даты</p>
                 </label>
+
+                <fieldset>
+                  <p class="radio-description">время<br />подачи</p>
+                  <label class="label">
+                    <input type="time" name="time" class="input" placeholder="00:00" />
+                  </label>
+                </fieldset>
               </form>
+            </div>
+
+            <ul class="menu">
+              <!--Завтрак-->
+              <li class="disabled">
+                <div class="menu__head">
+                  <div class="menu__row">
+                    <h2 class="menu__title">Завтрак</h2>
+                    <p class="menu__timeset">
+                      <span>Доступно только</span>
+                      <span>12:00 — 22:00</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="menu__body">
+                  <!--Комбо завтрак (блин+напиток)-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <p class="menu__name">Комбо завтрак (блин+напиток)</p>
+                        <span class="gramm">300 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="menu__description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Блины-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <p class="menu__name">Блины</p>
+                        <span class="gramm">220 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="menu__description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+                </div>
+              </li>
+
+              <!--Дневное меню-->
+              <li>
+                <div class="menu__head">
+                  <div class="menu__row">
+                    <h2 class="menu__title">Дневное меню</h2>
+                    <p class="menu__timeset"><span>12:00-22:00</span></p>
+                  </div>
+                </div>
+                <div class="menu__body">
+                  <!--Том-ям-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Том-ям</h2>
+                        <span class="gramm">300 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/petmol.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Ролл дерзкая креветка со сладкой кукурузой Planto-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Ролл дерзкая креветка со сладкой кукурузой Planto</h2>
+                        <span class="gramm">300 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Выпадает небольшое описание блюда или&nbsp;напитка. 2-3 коротких предложения. Также, как сделано в Расписании
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Классическая шаверма-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Классическая шаверма</h2>
+                        <span class="gramm">300 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Краб-ролл миндаль с муссом-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Краб-ролл миндаль с&nbsp;муссом</h2>
+                        <span class="gramm">300 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">1250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+                </div>
+              </li>
+
+              <!--Кофе-->
+              <li>
+                <div class="menu__head">
+                  <div class="menu__row">
+                    <h2 class="menu__title">Кофе</h2>
+                    <p class="menu__timeset"><span>10:00-22:00</span></p>
+                  </div>
+                </div>
+                <div class="menu__body">
+                  <!--Plantochino-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Plantochino</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Двойной Plantochino-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Двойной Plantochino</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Ice-Plantochino-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Ice-Plantochino</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Капучино на безлактозном-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Капучино на безлактозном</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/petmol.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Ice-капучино на безлактозном-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Ice-капучино на&nbsp;безлактозном</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/petmol.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Американо-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Американо</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Эспрессо-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Эспрессо</h2>
+                        <span class="gramm">300 мл.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam molestias nisi ex, incidunt iste sed neque doloremque quia
+                          distinctio quae, eligendi eius nemo tempora sint molestiae. Saepe expedita autem dolorem.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+                </div>
+              </li>
+
+              <!--Матча-->
+              <li>
+                <div class="menu__head">
+                  <div class="menu__row">
+                    <h2 class="menu__title">Матча</h2>
+                    <img src="./assets/img/svg/osnova.svg" alt="" />
+                    <p class="menu__timeset"><span>10:00-22:00</span></p>
+                  </div>
+                </div>
+                <div class="menu__body">
+                  <!--Горная сакура-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Горная сакура</h2>
+                        <span class="gramm">250 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Скай банан-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Скай банан</h2>
+                        <span class="gramm">250 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Милк черри-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Милк черри</h2>
+                        <span class="gramm">250 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+                </div>
+              </li>
+
+              <!--Функциональные напитки-->
+              <li>
+                <div class="menu__head">
+                  <div class="menu__row">
+                    <h2 class="menu__title">Функциональные напитки</h2>
+                    <p class="menu__timeset"><span>10:00-22:00</span></p>
+                  </div>
+                </div>
+                <div class="menu__body">
+                  <!--Шоколадная сила-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Шоколадная сила</h2>
+                        <span class="gramm">250 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+
+                  <!--Миндальный хелc дринкс*-->
+                  <article class="menu__item">
+                    <div data-accordeon class="red">
+                      <div data-accordeon-head>
+                        <h2 class="name">Миндальный хелc дринкс*</h2>
+                        <span class="gramm">250 г.</span>
+                      </div>
+                      <div data-accordeon-body>
+                        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                    <div class="menu__row">
+                      <span class="prise">250 ₽</span>
+                      <img src="./assets/img/svg/planto.svg" alt="" />
+                      <fieldset class="quantity">
+                        <p class="radio-description">Кол-во</p>
+                        <label class="label" data-quantity>
+                          <div data-minus>-</div>
+                          <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
+                          <div data-plus>+</div>
+                        </label>
+                      </fieldset>
+                    </div>
+                  </article>
+                </div>
+              </li>
+            </ul>
+
+            <div class="your-order">
+              <h2 class="title">Ваш заказ</h2>
+              <ul class="confirmation">
+                <li class="date">12 июня</li>
+                <li class="time">12:15</li>
+              </ul>
+
+              <ul class="menu">
+                <li>
+                  <form class="menu__body">
+                    <!--Товар 1-->
+                    <article class="menu__item">
+                      <div class="menu__row">
+                        <h3 class="name">Классическая шаверма</h3>
+                        <button type="button" class="delete"></button>
+                      </div>
+                      <div class="menu__row">
+                        <span class="prise">12 250 ₽</span>
+                        <fieldset class="quantity">
+                          <p class="radio-description">Кол-во</p>
+                          <label class="label" data-quantity>
+                            <div data-minus>-</div>
+                            <input type="number" name="product" class="quantity" value="12" min="0" max="99" step="1" />
+                            <div data-plus>+</div>
+                          </label>
+                        </fieldset>
+                      </div>
+                    </article>
+
+                    <!--Товар 2-->
+                    <article class="menu__item">
+                      <div class="menu__row">
+                        <h3 class="name">Краб-ролл миндаль с&nbsp;муссом</h3>
+                        <button type="button" class="delete"></button>
+                      </div>
+                      <div class="menu__row">
+                        <span class="prise">850 ₽</span>
+                        <fieldset class="quantity">
+                          <p class="radio-description">Кол-во</p>
+                          <label class="label" data-quantity>
+                            <div data-minus>-</div>
+                            <input type="number" name="product" class="quantity" value="12" min="0" max="99" step="1" />
+                            <div data-plus>+</div>
+                          </label>
+                        </fieldset>
+                      </div>
+                    </article>
+
+                    <div class="total">
+                      <span>Стоимость: 13 100 ₽</span>
+                      <input type="hidden" value="13 100 ₽" />
+                    </div>
+
+                    <button type="submit" class="button"><span>Сделать заказ</span></button>
+                  </form>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -313,7 +924,7 @@
             </a>
           </li>
           <li>
-            <a href="#orders">
+            <a href="#booking">
               <img src="./assets/img/svg/pen.svg" alt="" />
               <p>Мои записи</p>
             </a>
@@ -418,7 +1029,7 @@
               <p class="radio-description small">Количество порций</p>
               <label class="label" data-quantity>
                 <div data-minus>-</div>
-                <input type="number" name="product" class="quantity" value="0" />
+                <input type="number" name="product" class="quantity" value="0" min="0" max="99" step="1" />
                 <div data-plus>+</div>
               </label>
             </fieldset>

@@ -11,6 +11,24 @@
   height: 40px;
   flex-shrink: 0;
   background: var(--brown);
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 40px;
+    right: 0px;
+    top: 0px;
+    background: var(--biege);
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0;
+  }
 
   .inner {
     display: flex;
@@ -18,9 +36,6 @@
     align-items: center;
     width: 50%;
     height: 40px;
-    &:last-child {
-      background: var(--biege);
-    }
   }
 }
 

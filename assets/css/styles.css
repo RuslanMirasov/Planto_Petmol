@@ -759,6 +759,24 @@ input[type=number] {
           appearance: textfield;
 }
 
+input[type=time] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type=time]::-webkit-inner-spin-button,
+input[type=time]::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
 .alert.alert-danger {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1037,6 +1055,30 @@ input[type=number] {
       flex-shrink: 0;
   background: var(--brown);
 }
+.header:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 40px;
+  right: 0px;
+  top: 0px;
+  background: var(--biege);
+}
+.header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 0;
+}
 .header .inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1049,9 +1091,6 @@ input[type=number] {
           align-items: center;
   width: 50%;
   height: 40px;
-}
-.header .inner:last-child {
-  background: var(--biege);
 }
 
 .navigation-menu {
@@ -1235,6 +1274,50 @@ input[type=number] {
   -webkit-transform: translate(0%, -50%) rotate(180deg);
       -ms-transform: translate(0%, -50%) rotate(180deg);
           transform: translate(0%, -50%) rotate(180deg);
+}
+[data-accordeon].red [data-accordeon-head] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  gap: 10px;
+  padding-right: 0px;
+  align-items: flex-end;
+}
+[data-accordeon].red [data-accordeon-head]:before {
+  display: block;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 24px;
+  height: 24px;
+  -webkit-transform: translate(0%, 5%) rotate(0deg);
+      -ms-transform: translate(0%, 5%) rotate(0deg);
+          transform: translate(0%, 5%) rotate(0deg);
+  background: url("../img/svg/arrow-down-red.svg") no-repeat center center/cover;
+}
+[data-accordeon].red.active > [data-accordeon-head]:before {
+  -webkit-transform: translate(0%, 5%) rotate(180deg);
+      -ms-transform: translate(0%, 5%) rotate(180deg);
+          transform: translate(0%, 5%) rotate(180deg);
 }
 
 [data-accordeon-body] {
@@ -1589,14 +1672,254 @@ input[type=number] {
   padding-top: 5px;
 }
 
+#booking {
+  scroll-margin: 50px;
+}
+
 .section--menu {
   background: var(--black);
   color: var(--white);
   padding: 40px 0px;
   z-index: 2;
+  max-width: 420px;
+  margin: 0 auto;
+}
+@media (min-width: 420px) {
+  .section--menu {
+    border-radius: 30px;
+    padding-bottom: 20px;
+  }
 }
 .section--menu .title {
   text-align: left;
+}
+.section--menu .filters {
+  margin-bottom: 20px;
+}
+.section--menu .filters .label--select {
+  max-width: 170px;
+}
+.section--menu .filters fieldset {
+  margin-left: auto;
+}
+.section--menu .filters fieldset .label {
+  width: 80px;
+}
+.section--menu .filters fieldset .label input[type=time] {
+  color: var(--biege);
+  padding: 0px 14px;
+  text-align: center;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 4px;
+}
+.menu li {
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 24px;
+  background: var(--light_biege);
+  color: var(--brown);
+}
+.menu li.disabled {
+  pointer-events: none;
+}
+.menu li.disabled > * {
+  opacity: 0.3;
+}
+
+.menu__head {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--brown);
+}
+
+.menu__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  gap: 4px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.menu__title {
+  display: inline-block;
+  width: auto;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.menu__timeset {
+  display: inline-block;
+  width: auto;
+  max-width: 120px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.24;
+  text-align: right;
+}
+.menu__timeset span {
+  text-wrap: nowrap;
+}
+
+.menu__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  padding: 20px 24px;
+}
+.menu__body .menu__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8px;
+}
+.menu__body .name {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-right: auto;
+}
+.menu__body .gramm {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  text-wrap: nowrap;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 300;
+  opacity: 0.5;
+}
+.menu__body .description {
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 300;
+  opacity: 0.5;
+  padding-top: 5px;
+}
+.menu__body .prise {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+}
+.menu__body .quantity {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  gap: 10px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+.menu__body .quantity [data-minus],
+.menu__body .quantity [data-plus] {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+}
+.menu__body .quantity .radio-description {
+  font-size: 18px;
+}
+.menu__body .quantity .label[data-quantity] .quantity {
+  width: 40px;
+  height: 28px;
+}
+.menu__body .delete {
+  width: 32px;
+  height: 32px;
+  background: url("../img/svg/delete.svg") no-repeat center center/cover;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.menu__body .total {
+  border-top: 1px solid var(--brown);
+  padding-top: 12px;
+  font-size: 22px;
+  line-height: 1.24;
+  font-weight: 700;
+}
+
+.your-order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  margin-top: 32px;
+}
+.your-order .title {
+  text-align: center;
 }
 
 .section--orders {
