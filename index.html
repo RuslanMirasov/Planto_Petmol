@@ -45,6 +45,7 @@
             <div class="text">
               <h2>Рады видеть вас, Константин!</h2>
               <p>Ваш доступ на мастер-классы. <br />Запишитесь и покажите QR-код на входе.</p>
+              <p>Или назовите код <strong>12345</strong></p>
             </div>
             <img src="./assets/img/svg/qr.svg" alt="" data-popup-open="qr" />
           </div>
@@ -71,10 +72,10 @@
               </p>
             </div>
 
-            <div class="loyality-program">
-              <h2 class="title">7&nbsp;-&nbsp;12 июня 2026</h2>
+            <a href="https://planto-profi.ru/" class="loyality-program" target="_blank">
+              <!-- <h2 class="title">7&nbsp;-&nbsp;12 июня 2026</h2> -->
               <img src="./assets/img/about/banner.webp" alt="" class="banner" />
-            </div>
+            </a>
           </div>
         </section>
 
@@ -85,7 +86,7 @@
 
             <div class="filters">
               <form action="#" class="form" novalidate>
-                <label class="label label--select">
+                <div class="label label--select">
                   <select name="date" class="input" data-select>
                     <option value="" selected disabled hidden>&nbsp;</option>
                     <option value="07.06.2026">7 июня 2026</option>
@@ -96,7 +97,7 @@
                     <option value="12.06.2026">12 июня 2026</option>
                   </select>
                   <p class="placeholder">Выбор даты</p>
-                </label>
+                </div>
               </form>
               <button type="button" class="button black full" id="booking"><span>Мои записи</span></button>
             </div>
@@ -202,7 +203,7 @@
 
             <div class="filters">
               <form action="#" class="form" novalidate>
-                <label class="label label--select">
+                <div class="label label--select">
                   <select name="date" class="input" data-select>
                     <option value="" selected disabled hidden>&nbsp;</option>
                     <option value="07.06.2026">7 июня 2026</option>
@@ -213,7 +214,7 @@
                     <option value="12.06.2026">12 июня 2026</option>
                   </select>
                   <p class="placeholder">Выбор даты</p>
-                </label>
+                </div>
 
                 <fieldset>
                   <p class="radio-description">время<br />подачи</p>
@@ -1009,7 +1010,7 @@
               </label>
             </fieldset>
 
-            <label class="label label--select">
+            <div class="label label--select">
               <select name="position" class="input" data-select required>
                 <option value="" selected disabled hidden>&nbsp;</option>
                 <option value="option 1">Опция 1</option>
@@ -1018,7 +1019,7 @@
                 <option value="option 4">Опция 4</option>
               </select>
               <p class="placeholder">Опции</p>
-            </label>
+            </div>
 
             <ul class="confirmation">
               <li class="date">12 июня</li>

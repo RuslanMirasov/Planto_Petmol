@@ -1414,6 +1414,11 @@ input[type=time]::-webkit-clear-button {
   line-height: 1.24;
   color: var(--brown);
 }
+.hero-greating p strong {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 0.9;
+}
 
 .section--form {
   background: var(--black);
@@ -1508,16 +1513,18 @@ input[type=time]::-webkit-clear-button {
       align-content: center;
   gap: 4px;
   text-align: center;
-  margin-top: 32px;
 }
 .loyality-program .title {
   font-size: 32px;
+  margin-bottom: 32px;
   color: var(--biege);
 }
 
+.loyality-program {
+  margin-top: 30px;
+}
 .loyality-program .banner {
   margin: 0 auto;
-  margin-top: 30px;
   max-width: 100%;
 }
 

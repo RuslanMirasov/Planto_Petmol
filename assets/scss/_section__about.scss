@@ -65,18 +65,18 @@
   align-content: center;
   gap: 4px;
   text-align: center;
-  margin-top: 32px;
 
   .title {
     font-size: 32px;
+    margin-bottom: 32px;
     color: var(--biege);
   }
 }
 
 .loyality-program {
+  margin-top: 30px;
   .banner {
     margin: 0 auto;
-    margin-top: 30px;
     max-width: 100%;
   }
 }
