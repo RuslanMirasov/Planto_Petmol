@@ -1083,6 +1083,7 @@ input[type=time]::-webkit-clear-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1091,6 +1092,7 @@ input[type=time]::-webkit-clear-button {
           align-items: center;
   width: 50%;
   height: 40px;
+  z-index: 2;
 }
 
 .navigation-menu {
@@ -1427,7 +1429,8 @@ input[type=time]::-webkit-clear-button {
 }
 .section--form .form {
   margin-top: 25px;
-  max-width: 310px;
+  max-width: 100%;
+  padding: 0px 20px;
 }
 
 .section--about {
@@ -1716,6 +1719,11 @@ input[type=time]::-webkit-clear-button {
   color: var(--biege);
   padding: 0px 14px;
   text-align: center;
+}
+.section--menu .confirmation > li {
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .menu {

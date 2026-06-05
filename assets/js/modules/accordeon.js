@@ -1,14 +1,14 @@
 export const initAccordeons = () => {
-  const accordeons = document.querySelectorAll('[data-accordeon]');
+  if (window.__accordeonsInitialized) return;
+  window.__accordeonsInitialized = true;
 
-  if (!accordeons.length) return;
+  const initializedAccordeons = new WeakSet();
 
   const getOwnElement = (accordeon, selector) => {
     return Array.from(accordeon.querySelectorAll(selector)).find(el => el.closest('[data-accordeon]') === accordeon);
   };
 
   const getBody = accordeon => getOwnElement(accordeon, '[data-accordeon-body]');
-  const getHeader = accordeon => getOwnElement(accordeon, '[data-accordeon-head]');
 
   const getActiveParentAccordeons = accordeon => {
     const parents = [];
@@ -50,7 +50,20 @@ export const initAccordeons = () => {
     });
   };
 
+  const prepareAccordeon = accordeon => {
+    if (initializedAccordeons.has(accordeon)) return;
+
+    const body = getBody(accordeon);
+    if (!body) return;
+
+    body.style.transition = 'height 0.5s ease 0s';
+    setBodyHeight(accordeon);
+    initializedAccordeons.add(accordeon);
+  };
+
   const toggleAccordeon = accordeon => {
+    prepareAccordeon(accordeon);
+
     const body = getBody(accordeon);
     if (!body) return;
 
@@ -79,36 +92,46 @@ export const initAccordeons = () => {
     }
   };
 
-  Array.from(accordeons)
-    .reverse()
-    .forEach(accordeon => {
-      const header = getHeader(accordeon);
-      const body = getBody(accordeon);
+  document.querySelectorAll('[data-accordeon]').forEach(prepareAccordeon);
 
-      if (!header || !body) return;
+  document.addEventListener('click', event => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
 
-      body.style.transition = 'height 0.5s ease 0s';
-      setBodyHeight(accordeon);
+    const header = target.closest('[data-accordeon-head]');
+    if (!header) return;
 
-      header.addEventListener('click', () => toggleAccordeon(accordeon));
-      body.addEventListener('transitionend', event => {
-        if (event.target === body && event.propertyName === 'height') {
-          if (accordeon.classList.contains('active')) {
-            body.style.height = 'auto';
-            body.style.overflow = 'visible';
-          } else {
-            body.style.overflow = 'hidden';
-          }
+    const accordeon = header.closest('[data-accordeon]');
+    if (!accordeon) return;
 
-          releaseParentHeights(accordeon);
-        }
-      });
-    });
+    toggleAccordeon(accordeon);
+  });
+
+  document.addEventListener('transitionend', event => {
+    if (event.propertyName !== 'height') return;
+
+    const body = event.target;
+    if (!(body instanceof Element) || !body.matches('[data-accordeon-body]')) return;
+
+    const accordeon = body.closest('[data-accordeon]');
+    if (!accordeon) return;
+
+    if (accordeon.classList.contains('active')) {
+      body.style.height = 'auto';
+      body.style.overflow = 'visible';
+    } else {
+      body.style.overflow = 'hidden';
+    }
+
+    releaseParentHeights(accordeon);
+  });
 
   window.addEventListener('resize', () => {
-    Array.from(accordeons)
+    Array.from(document.querySelectorAll('[data-accordeon]'))
       .reverse()
       .forEach(accordeon => {
+        prepareAccordeon(accordeon);
+
         if (accordeon.classList.contains('active')) {
           setBodyHeight(accordeon);
         }

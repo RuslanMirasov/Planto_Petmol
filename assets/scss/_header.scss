@@ -32,10 +32,12 @@
 
   .inner {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 40px;
+    z-index: 2;
   }
 }
 
