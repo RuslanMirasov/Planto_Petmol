@@ -120,6 +120,9 @@ button {
   &.visible {
     overflow: visible;
   }
+  &:has(.choices.is-open) {
+    z-index: 15;
+  }
 }
 
 .cookie-message {

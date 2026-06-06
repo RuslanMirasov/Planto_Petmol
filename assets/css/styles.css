@@ -153,6 +153,9 @@ button:disabled {
 .section.visible {
   overflow: visible;
 }
+.section:has(.choices.is-open) {
+  z-index: 15;
+}
 
 .cookie-message {
   display: -webkit-box;
